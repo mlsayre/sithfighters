@@ -32,7 +32,22 @@ And now let's make the associations. This is done in the model files. First up, 
           has_many :apprenticeships
           has_many :padawans, :through => :apprenticeships
         end
+        
+Then, the padawan.rb model file:
 
+				class Padawan < ActiveRecord::Base
+				  attr_accessible :name
+				  has_many :apprenticeships
+				  has_many :jedis, :through => :apprenticeships
+				end
+				
+And, finally, set up the apprenticeships.rb model file like this:
+
+				class Apprenticeship < ActiveRecord::Base
+  				attr_accessible :jedi_id, :padawan_id
+  				belongs_to :jedi
+  				belongs_to :padawan
+				end
 4. Set up associations in model files
 	- jedi.rb:
 class Jedi < ActiveRecord::Base
