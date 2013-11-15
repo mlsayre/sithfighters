@@ -90,102 +90,102 @@ And then, create a slew of Padawans, all eager to become powerful Jedis (go back
 
 ![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image7.png)
 
-
-Now we can easily create Jedis and Padawans! Let’s create some.
-Jedis: IMAGE6.png
-(simply go back to http://localhost:3000 to start creating Padawans)
-Padawans: IMAGE7.png
-
 Now we need to make it easy to pair the Jedis and Padawans up through apprenticeships, so let’s use their names rather than their ID’s through drop down menus. That code is found in the Apprenticeships _form.html.erb partial. Let’s change the end of that file from this:
 
-  <div class="field">
-	<%= f.label :jedi_id %><br />
-	<%= f.number_field :jedi_id %>
-  </div>
-  <div class="field">
-	<%= f.label :padawan_id %><br />
-	<%= f.number_field :padawan_id %>
-  </div>
-  <div class="actions">
-	<%= f.submit %>
-  </div>
-<% end %>
+          <div class="field">
+        	  <%= f.label :jedi_id %><br />
+        	  <%= f.number_field :jedi_id %>
+          </div>
+          <div class="field">
+        	  <%= f.label :padawan_id %><br />
+        	  <%= f.number_field :padawan_id %>
+          </div>
+          <div class="actions">
+        	  <%= f.submit %>
+          </div>
+        <% end %>
 
 to this:
-<div class="field">
-	<%= f.select :jedi_id, Jedi.all.collect { |p| [ p.name, p.id ] } %>
-  </div>
-  <div class="field">
-	<%= f.select :padawan_id, Padawan.all.collect { |p| [ p.name, p.id ] } %>
-  </div>
-  <div class="actions">
-	<%= f.submit %>
-  </div>
-<% end %>
 
+          <div class="field">
+            <%= f.select :jedi_id, Jedi.all.collect { |p| [ p.name, p.id ] } %>
+          </div>
+          <div class="field">
+            <%= f.select :padawan_id, Padawan.all.collect { |p| [ p.name, p.id ] } %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+        
 Now we have drop down menus, populated with all of our Jedis and Padawans, all ready to be synched up through their Apprenticeships!
 
-IMAGE8.png
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image8.png)
 
 Create an apprenticeship, and let’s see what happens…
 
-IMAGE9.png
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image9.png)
 
-Hmm, we’re almost there, but we’re only seeing the Jedi and Padawan ID’s in the apprenticeship show view. Not very satisfying Let’s change that so we can see their names.
+Hmm, we’re almost there, but we’re only seeing the Jedi and Padawan ID’s in the apprenticeship show view. Not very satisfying. Let’s change that so we can see their names.
 
 In views/apprenticeships/show.html.erb, change these lines:
 
-<p>
-  <b>Jedi:</b>
-  <%= @apprenticeship.jedi_id %>
-</p>
-
-<p>
-  <b>Padawan:</b>
-  <%= @apprenticeship.padawan_id %>
-</p>
+        <p>
+          <b>Jedi:</b>
+          <%= @apprenticeship.jedi_id %>
+        </p>
+        
+        <p>
+          <b>Padawan:</b>
+          <%= @apprenticeship.padawan_id %>
+        </p>
 
 to read like this:
 
-<p>
-  <b>Jedi:</b>
-  <%= @apprenticeship.jedi.name %>
-</p>
-
-<p>
-  <b>Padawan:</b>
-  <%= @apprenticeship.padawan.name %>
-</p>
+        <p>
+          <b>Jedi:</b>
+          <%= @apprenticeship.jedi.name %>
+        </p>
+        
+        <p>
+          <b>Padawan:</b>
+          <%= @apprenticeship.padawan.name %>
+        </p>
 
 And reload…
-IMAGE10.png
+
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image10.png)
 
 Much better! But, clicking “Back” to get back to the Apprenticeships index, we see those darn ID’s again.
 
-IMAGE11.png
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image11.png)
 
-Let’s change the appropriate views/apprenticeships/index.html.erb lines to read from this:
+To change that, let’s change the appropriate views/apprenticeships/index.html.erb lines to read from this:
 
-<% @apprenticeships.each do |apprenticeship| %>
-  <tr>
-	<td><%= apprenticeship.jedi_id %></td>
-	<td><%= apprenticeship.padawan_id %></td>
+        <% @apprenticeships.each do |apprenticeship| %>
+          <tr>
+        	<td><%= apprenticeship.jedi_id %></td>
+        	<td><%= apprenticeship.padawan_id %></td>
 
 to this:
 
-<% @apprenticeships.each do |apprenticeship| %>
-  <tr>
-	<td><%= apprenticeship.jedi.name %></td>
-	<td><%= apprenticeship.padawan.name %></td>
+        <% @apprenticeships.each do |apprenticeship| %>
+          <tr>
+        	<td><%= apprenticeship.jedi.name %></td>
+        	<td><%= apprenticeship.padawan.name %></td>
 
 And reloading the apprenticeships index, we see:
-IMAGE12.png
+
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image12.png)
 
 That’s what we want to see! Make a few more associations, and we can see all the Apprenticeships we need:
 
-IMAGE13.png
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image13.png)
 
-There you go, a step-by-step tutorial on how to make has_many :through associations AND a refresher on Jedi/Padawan apprenticeships in the Star Wars universe. 
+There you go, a step-by-step tutorial on how to make has_many :through associations AND a refresher on Jedi/Padawan apprenticeships in the Star Wars universe. I hope it has helped you avoid some of the confusion I went through when I first was learning this particular association. I know I wasn't the only one making life harder than it needed to be. I learned to let go a little bit and just let Ruby on Rails do some of its magic for us. so cool.
 
 Find all the code for the “sithfighters” tutorial project on GitHub:
 https://github.com/mlsayre/sithfighters
+
+Matt Sayre's blog found at:
+http://gitmatt.com
