@@ -1,11 +1,13 @@
 has_many :through Tutorial "sithfighters"
 =========================================
 
-The has_many :through association is one of the most useful associations in Rails. It is a way of relating two models together *through* another model. For instance, a mentor may have many mentees and a mentee may have many mentors, all linked together through mentorships. The three models there would be mentors, mentees, and mentorships. Or doctors may have many patients and patients may have many doctors and they could all be linked together through their appointments. 
+The has_many :through association is one of the most useful associations in Rails. It is a way of relating two models together *through* another model. For instance, a mentor may have many mentees and a mentee may have many mentors, all linked together through mentorships. The three models there would be mentors, mentees, and mentorships. 
 
-Rails makes creating these associations very easy, but it's also easy to overthink these relationships. If you just let Rails perform its magic, though, you can really see one of the strength of the Ruby on Rails framework. The first time I tried to make a has_many :through association, I overthought it and spent many hours trying to figure out what would later take me only about 20 minutes.
+Or doctors may have many patients and patients may have many doctors and they could all be linked together through their appointments. In fact, our Code Fellows teachers referred to these relationships as "Ment or Ship"s. 
 
-This tutorial is meant to help a Rails beginner create and understant this association and see how easy Rails can make your life! Has_many :through is just one of many model associations, but can be somewhat confusing if you're not clear on the concept. I will take you step-by-step through the process of creating the association, starting with creating a new Rails project.
+Rails makes creating these associations very easy, but it's also easy to overthink these relationships. If you just let Rails perform its magic, though, you can really see one of the strengths of the Ruby on Rails framework. The first time I tried to make a has_many :through association, I overthought it and spent many hours trying to figure out what would later take me only about 20 minutes.
+
+This tutorial is meant to help a Rails beginner create and understand this association and see how easy Rails can make your life! has_many :through is just one of many model associations, but can be somewhat confusing if you're not clear on the concept. I will take you step-by-step through the process of creating the association, starting with creating a new Rails project.
 
 I used Rails version 3.2.14 with Ruby version 2.0.0p247. Follow along as we associate Jedis to Padawans through "Apprenticeships". If you're not familiar with Star Wars (?!), Jedis are like teachers and Padawans are like students. (And go now to watch Star Wars Episodes 4-6. This tutorial will be here when you get back.)
 
@@ -182,7 +184,7 @@ That’s what we want to see! Make a few more associations, and we can see all t
 
 ![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image13.png)
 
-There you go, a step-by-step tutorial on how to make has_many :through associations AND a refresher on Jedi/Padawan apprenticeships in the Star Wars universe. I hope it has helped you avoid some of the confusion I went through when I first was learning this particular association. I know I wasn't the only one making life harder than it needed to be. I learned to let go a little bit and just let Ruby on Rails do some of its magic for us. so cool.
+There you go, a step-by-step tutorial on how to make has_many :through associations AND a refresher on Jedi/Padawan apprenticeships in the Star Wars universe. I hope it has helped you avoid some of the confusion I went through when I first was learning this particular association. I know I wasn't the only Code Fellow student making life harder than it needed to be. I learned to let go a little bit and just let Ruby on Rails do some of its magic for us and things went much smoother. So cool.
 
 Find all the code for the “sithfighters” tutorial project on GitHub:
 https://github.com/mlsayre/sithfighters
