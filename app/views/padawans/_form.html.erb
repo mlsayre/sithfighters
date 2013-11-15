@@ -1,0 +1,21 @@
+<%= form_for(@padawan) do |f| %>
+  <% if @padawan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@padawan.errors.count, "error") %> prohibited this padawan from being saved:</h2>
+
+      <ul>
+      <% @padawan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<h1>Listing padawans</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @padawans.each do |padawan| %>
+  <tr>
+    <td><%= padawan.name %></td>
+    <td><%= link_to 'Show', padawan %></td>
+    <td><%= link_to 'Edit', edit_padawan_path(padawan) %></td>
+    <td><%= link_to 'Destroy', padawan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Padawan', new_padawan_path %>

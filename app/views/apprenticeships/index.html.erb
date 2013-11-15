@@ -1,0 +1,27 @@
+<h1>Listing apprenticeships</h1>
+
+<table>
+  <tr>
+    <th>Jedi</th>
+    <th>Padawan</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @apprenticeships.each do |apprenticeship| %>
+  <tr>
+    <td><%= apprenticeship.jedi.name %></td>
+    <td><%= apprenticeship.padawan.name %></td>
+    <td><%= link_to 'Show', apprenticeship %></td>
+    <td><%= link_to 'Edit', edit_apprenticeship_path(apprenticeship) %></td>
+    <td><%= link_to 'Destroy', apprenticeship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Apprenticeship', new_apprenticeship_path %>
+<%= link_to 'New Jedi', new_jedi_path %>
+<%= link_to 'New Padawan', new_padawan_path %>
