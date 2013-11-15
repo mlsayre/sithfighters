@@ -61,29 +61,36 @@ Open your browser, and go to the address http://localhost:3000. This is what you
 
 ![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image1.png)
 
-5. Look at what we have so far
-	- delete public/index.html file
-	- We want to see apprenticeships so set root page to that. In routes file (config/routes.rb), add:
-root :to => 'apprenticeships#index'
-	- start local server in project’s main directory: 
-$ rails s
-	- open browser, go to http://localhost:3000
-IMAGE1.png
-	- click “New Apprenticeship”.
-IMAGE2.png
-- Only numbers (Jedi and Padawan ID’s work. 
-IMAGE3.png
-Click “Create Apprenticeship”
-IMAGE4.png
-We need to make it more user-friendly. These numbers are the Jedi and Padawan ID’s, yet those Jedis and Padawans don’t exist yet! Let’s create some Jedis and Padawans.
+Cool! Could it be that easy? Well, almost. If we click "New Apprenticeship", we get this:
 
-6. Editing the views to make it easy to create Apprenticeships. First, in views/apprenticeships/index.html.erb, add at the very end:
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image2.png)
 
-<%= link_to 'New Jedi', new_jedi_path %>
-<%= link_to 'New Padawan', new_padawan_path %>
+(It may look a little different, depending on your browser.) You'll notice that you're only allowed to enter numbers, though, which isn't exactly what we want.
 
-Take a look, reload http://localhost:3000 in browser:
-	IMAGE5.png
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image3.png)
+
+Click on "Create Apprenticeship" and you indeed create an apprenticeship, but with useless numbers...
+
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image4.png)
+
+Those numbers are Jedi and Padawan ID's, though none have been created yet. What we need are a bunch of Jedi and Padawan names. Let's put some links in to create some Jedis and Padawans. We need to head over to the views and do some work there. First up, app/views/apprenticeships/index.html.erb. Add the following link code to the bottom of that file:
+
+        <%= link_to 'New Jedi', new_jedi_path %>
+        <%= link_to 'New Padawan', new_padawan_path %>
+        
+Take a look, reload http://localhost:3000 and we should see:
+
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image5.png)
+
+Ah ha, now we can start making some Jedis and Padawans! First, let's make a bunch of Jedis:
+
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image6.png)
+
+And then, create a slew of Padawans, all eager to become powerful Jedis (go back to http://localhost:3000 to get to the "New Padawan" link):
+
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image7.png)
+
+
 Now we can easily create Jedis and Padawans! Let’s create some.
 Jedis: IMAGE6.png
 (simply go back to http://localhost:3000 to start creating Padawans)
