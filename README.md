@@ -33,40 +33,33 @@ And now let's make the associations. This is done in the model files. First up, 
           has_many :padawans, :through => :apprenticeships
         end
         
-Then, the padawan.rb model file:
+Notice how the syntax makes it very clear what this association is all about. Pretty cool! Then, the padawan.rb model file:
 
-				class Padawan < ActiveRecord::Base
-				  attr_accessible :name
-				  has_many :apprenticeships
-				  has_many :jedis, :through => :apprenticeships
-				end
+        class Padawan < ActiveRecord::Base
+          attr_accessible :name
+          has_many :apprenticeships
+          has_many :jedis, :through => :apprenticeships
+        end
 				
 And, finally, set up the apprenticeships.rb model file like this:
 
-				class Apprenticeship < ActiveRecord::Base
-  				attr_accessible :jedi_id, :padawan_id
-  				belongs_to :jedi
-  				belongs_to :padawan
-				end
-4. Set up associations in model files
-	- jedi.rb:
-class Jedi < ActiveRecord::Base
-  attr_accessible :name
-  has_many :apprenticeships
-  has_many :padawans, :through => :apprenticeships
-end
-	- padawan.rb:
-class Padawan < ActiveRecord::Base
-  attr_accessible :name
-  has_many :apprenticeships
-  has_many :jedis, :through => :apprenticeships
-end
-	- apprenticeship.rb
-class Apprenticeship < ActiveRecord::Base
-  attr_accessible :jedi_id, :padawan_id
-  belongs_to :jedi
-  belongs_to :padawan
-end
+        class Apprenticeship < ActiveRecord::Base
+          attr_accessible :jedi_id, :padawan_id
+          belongs_to :jedi
+          belongs_to :padawan
+        end
+
+We're almost ready to take a look at the app. Just a couple of steps before we fire it up in our browser. Delete the public/index.html file first. Then, we want the apprenticeships index page to be the root of our app, so open up config/routes.rb and add this line somewhere (toward the top is nice):
+
+        root :to => 'apprenticeships#index'
+        
+Then, start the local server in sithfighter's main directory:
+
+        $ rails s
+        
+Open your browser, and go to the address http://localhost:3000. This is what you should see:
+
+![](https://s3-us-west-2.amazonaws.com/portmls/portfolio/image1.png)
 
 5. Look at what we have so far
 	- delete public/index.html file
